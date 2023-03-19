@@ -1,0 +1,45 @@
+
+
+= javascript_pack_tag 'add_field_select'
+= javascript_pack_tag 'add_file_field'
+
+- if @post.errors.any?
+  .error
+    - post.errors.full_messages.each do |error|
+      %p= error
+= form_with(model: @post, local: true, id: "post_form") do |f|
+  .field  
+    = f.label :title
+    %br
+    = f.text_field :title, placeholder: "記事の題名", required: true
+  .field 
+    = f.label :field
+    .field_form
+      - unless @post.field&.has_parent?
+        = f.collection_select(:field_id, Field.where(ancestry:nil), :id, :name, {selected: @post.field&.id, include_blank: "選択してください"},{ class: "field_list", required: true})
+      - else
+        - unless @post.field.parent.has_parent?
+          = f.collection_select(:field_id, Field.where(ancestry:nil), :id, :name, {selected: @post.field.parent.id, include_blank: "選択してください"},{ class: "field_list", required: true})
+          = f.collection_select(:field_id, @post.field.parent.children, :id, :name, {selected: @post.field.id, include_blank: "選択してください"},{ class: "field_list", required: true})
+        - else 
+          = f.collection_select(:field_id, Field.where(ancestry:nil), :id, :name, {selected: @post.field.parent.parent.id, include_blank: "選択してください"},{ class: "field_list", required: true})
+          = f.collection_select(:field_id, @post.field.parent.parent.children, :id, :name, {selected: @post.field.parent.id, include_blank: "選択してください"},{ class: "field_list", required: true})
+          = f.collection_select(:field_id, @post.field.parent.children, :id, :name, {selected: @post.field.id, include_blank: "選択してください"},{ class: "field_list", required: true})
+  .field
+    = f.label :file
+    %br
+    - if @post.files.present?
+      .field_file_area
+        = f.file_field :files, required: true, multiple: true, id:"edit-file"
+        %p{class: "file_remove"} 削除 
+        %ul
+          - @post.files.each do |file|
+            %li= file.filename
+    .field_file_area
+      = f.file_field :files, required: true, multiple: true
+  .field
+    = f.label :text
+    %br
+    = f.text_area :text, placeholder: "記事の詳細" ,rows: 10, required: true
+  = f.submit "SEND"
+

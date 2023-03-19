@@ -1,0 +1,17 @@
+
+= render "layouts/header"
+.users_show{class:"contents"}
+  .users_show-top{class:"posts_show-title"}
+    %h2 ユーザー情報
+    .users_show-top-profile
+      .users_show-top-profile-image
+        = image_tag current_user.image
+      .users_show-top-profile-list
+        %p= "ユーザー名： #{current_user.nickname}"
+        %p= "メールアドレス： #{current_user.email}"
+    .users_show-sentence 
+      = simple_format(current_user.text)
+  .users_show-top{class:"posts_show-title"}
+    %h2 投稿履歴
+    = render partial: "layouts/post_list", locals: {posts: current_user.posts}
+  

@@ -1,0 +1,25 @@
+
+.users {
+  &_show {
+    &-top {
+      > h2 {
+        font-weight: bold;
+        border-bottom: 1px solid lightgrey;
+      }
+      &-profile {
+          @include position_center;
+        &-image {
+          @include image_base_size;
+        }
+        &-list {
+          display: flex;
+          flex-direction: column;
+          font-weight: bold;
+        }
+      } 
+    }
+    &-sentence {
+      padding:20px;
+    }
+  }
+}

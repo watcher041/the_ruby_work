@@ -1,0 +1,15 @@
+
+= render 'layouts/header'
+.posts_show{class:"contents"}
+  %h2=@post.title
+  .posts_show-title
+    %h2 記事の詳細
+    %p= raw @post.text
+  %h4 添付ファイル一覧
+  %ol
+    - @post.files.each do |file|
+      %li.posts_show-list
+        = link_to rails_blob_path(file) do
+          %p=file.filename
+          = image_tag file.preview(resize: "300x300>")
+  

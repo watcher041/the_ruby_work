@@ -1,0 +1,6 @@
+
+= render "layouts/header"
+.posts_searches_index
+  %h2 検索結果 
+  %p="- #{@posts.length} 件記事が見つかりました。-"
+  = render partial: "layouts/post_list", locals: {posts: @posts}

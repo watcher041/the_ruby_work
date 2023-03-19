@@ -1,0 +1,21 @@
+
+.posts_searches {
+
+  &_index {
+      background-color: white;
+      margin:5%;
+      box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+      padding:30px;
+    > p {
+      text-align: center;
+      border-bottom:1px solid lightgray;
+      padding-bottom: 30px;
+    }
+    > h2 {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+}

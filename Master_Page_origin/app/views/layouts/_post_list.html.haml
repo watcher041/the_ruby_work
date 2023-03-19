@@ -1,0 +1,13 @@
+
+- posts.each do |post|
+  ._post_list{id:"post-#{post.id}"}
+    ._post_list-top
+      ._post_list-top-data
+        = "#{post.created_at.strftime('%Y年%m月%d日 %H:%M:%S')} 投稿、"
+        = "#{post.updated_at.strftime('%Y年%m月%d日 %H:%M:%S')} 最終更新"
+      -if user_signed_in? && current_user.id == post.user.id
+        ._post_list-top-edit
+          = link_to "編集" , edit_post_path(post.id)
+          = link_to "削除" , post_path(post.id), method: :delete, data: { confirm: '本当に削除してもよろしいでしょうか？' }, remote: true
+    %h3= link_to post.title, post_path(post.id)
+    %p= "投稿者：#{post.user.nickname}"

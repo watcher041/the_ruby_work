@@ -1,0 +1,6 @@
+
+= render 'layouts/header'
+.fields_show{class:"contents"}
+  %h2=@field.name
+  = render partial: "layouts/post_list", locals: {posts: @field.posts}
+  

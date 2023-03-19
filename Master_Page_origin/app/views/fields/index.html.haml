@@ -1,0 +1,21 @@
+
+= render "layouts/header"
+.fields_index
+  .fields_index-search
+    %h2 記事検索
+    = form_with(url: posts_searches_path, local: true, method: :get) do |f|
+      = f.text_field :keyword, placeholder: "キーワードから探す", class: "search_box"
+      %label
+        = image_tag "search.png", class:"search_icon"
+        = f.submit "検索", class: "search-btn"
+  .fields_index-top
+    %h2 索引一覧
+    .fields_index-top-content_parent
+      - @fields.each do |field|
+        %details
+          %summary= field.name
+          .fields_index-top-content_child
+            = link_to field.name, field_path(field.id)
+            - unless field.children.blank?
+              - field.children.each do |child|
+                = link_to child.name, field_path(child.id)
