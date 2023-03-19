@@ -1,0 +1,594 @@
+// 画面サイズ 共通
+.items_new,.items_edit {
+    background-color: whitesmoke;
+    display: grid;
+    grid-template:
+    "body" 1fr;
+    .items_body {
+        grid-area: body;
+        height:    100%;
+        display:   grid;
+        .items_header {
+            grid-area: header;
+        }
+        .items_main {
+            grid-area:   main;
+        }
+        .items_footer {
+            grid-area: footer;
+        }
+        .items_main {
+            display: grid;
+            grid-template:
+                "list"1fr;
+            .items_form_list {
+                grid-area:   list;
+                form {
+                    display: grid;
+                    grid-template: 
+                    "....."3px
+                    "photos"minmax(300px, auto)
+                    "....."3px
+                    "item "minmax(300px, auto)
+                    "....."3px
+                    "info "minmax(300px, auto)
+                    "....."3px
+                    "post "minmax(300px, auto)
+                    "....."3px
+                    "price"min(300px)
+                    "....."3px
+                    "submit"200px
+                    "notice"50px
+                    ".....";
+                    .items_form_photos {
+                        grid-area: photos;
+                    }
+                    .items_form_item {
+                        grid-area:   item;
+                    }
+                    .items_form_info {
+                        grid-area:   info;
+                    }
+                    .items_form_post {
+                        grid-area:   post;
+                    }
+                    .items_form_price {
+                        grid-area:  price;
+                    }
+                    .items_form_submit {
+                        grid-area: submit;
+                    }
+                    .items_form_notice {
+                        grid-area: notice;
+                    }
+
+                    .items_form_photos {
+                        .photos_input {
+                            width:       100%;
+                            min-height: 200px;
+                            max-height:  auto;
+                            #input_photos_field {
+                                width:     100%;
+                                display:   flex;
+                                flex-wrap: wrap;
+                                .input_photo_preview {
+                                    width:    20%;
+                                    height: 200px;
+                                    display: none;
+                                    display: grid;
+                                    grid-template:
+                                    "...... ......  ......  ......  ......"
+                                    "...... preview preview preview ......"100px
+                                    "...... ......  ......  ......  ......"
+                                    "...... edit    ......  remove  ......"20px
+                                    "...... ......  ......  ......  ......"/
+                                        10px auto 0 auto 10px;
+                                    img {
+                                        grid-area: preview;
+                                    }
+                                    .input_photo_edit {
+                                        grid-area:    edit;
+                                    }
+                                    .input_photo_remove {
+                                        grid-area:  remove;
+                                    }
+                                    img {
+                                        width:       100px;
+                                        height:      100px;
+                                        margin:       auto;
+                                    }
+                                    .input_photo_edit {
+                                        font-size: 15px;
+                                        text-align: center;
+                                        cursor:    pointer;
+                                        &:hover {
+                                            transform: scale(1.5);
+                                            color: blue;
+                                        }
+                                    }
+                                    .input_photo_remove {
+                                        font-size: 12px;
+                                        text-align: center;
+                                        cursor:    pointer;
+                                        color:      blue;
+                                        &:hover{
+                                            transform: scale(1.5);
+                                            color:   red;
+                                        }
+                                    }
+                                }
+                                label.input_photo_field {
+                                    border: 1px dashed gray;
+                                    text-align:        center;
+                                    cursor: pointer;
+                                    height:   200px;
+                                    flex:    1 1 0%;
+                                    display:   grid;
+                                    grid-template:
+                                    "..... ..... ....."
+                                    "..... fas   ....."
+                                    "..... text  ....."
+                                    "..... ..... .....";
+                                    .fa-camera {
+                                        grid-area:  fas;
+                                    }
+                                    .photos_input_text {
+                                        grid-area: text;
+                                    }
+                                    .input_photo_file {
+                                        display:   none;
+                                    }
+                                    img.fa-camera {
+                                        background-color: black;
+                                        margin:  auto;
+                                        width:   24px;
+                                    }
+                                    .photos_input_text {
+                                        font-size: 12px;
+                                    }
+                                    &:hover {
+                                        background-color: lightgray;
+                                        opacity:                  0.5;
+                                    }
+                                }
+                                .hover_photo_file {
+                                    background-color: gray;
+                                    opacity:             0.5;
+                                }
+                            }
+                        }
+                    }
+
+                    .items_form_item {
+                        display: grid;
+                        grid-template:
+                        "...... ...... ......"
+                        "name   name   name  "
+                        "...... ...... ......"10px
+                        "detail detail detail"
+                        "...... ...... ......";
+                        .items_name {
+                            grid-area: name;
+                        }
+                        .items_detail {
+                            grid-area: detail;
+                        }
+                        .items_name {
+                            .items_form_input {
+                                border-radius: 5px;
+                                padding:    0 16px;
+                                width:  100%;
+                                height: 48px;
+                            }
+                        }
+                        .items_detail {
+                            .items_form_text_area {
+                                resize:       vertical;
+                                vertical-align: middle;
+                                overflow:       scroll;
+                                width:   100%;
+                                min-height: 250px;
+                            }
+                            .notice_text {
+                                text-align:    end;
+                                color: lightgray;
+                                font-size:    12px;
+                                display:      grid;
+                                grid-template:
+                                "..... now max"/
+                                1fr 50px 50px;
+                                .input_text_length {
+                                    grid-area: now;
+                                }
+                                .max_text_length {
+                                    grid-area: max;
+                                }
+                                
+                            }
+                        }
+                    }
+
+                    .items_form_info {
+                        display: grid;
+                        grid-template:
+                        "...... ...... ......"
+                        "category category category"
+                        "...... ...... ......"20px
+                        "brand  brand  brand "
+                        "...... ...... ......"20px
+                        "status status status"
+                        "...... ...... ......";
+                        .items_category {
+                            grid-area: category;
+                            > .category_form {
+                                margin:10px 0;
+                            }
+                        }
+                        .items_brand {
+                            grid-area: brand;
+                        }
+                        .items_status {
+                            grid-area: status;
+                        }
+                        .items_brand {
+                            .items_form_input {
+                                border-radius: 5px;
+                                padding:    0 16px;
+                                width:  100%;
+                                height: 48px;
+                            }
+                        }
+                    }
+
+                    .items_form_post {
+                        display: grid;
+                        grid-template:
+                        "..... ..... ....."
+                        "pay   pay   pay  "
+                        "..... ..... ....."20px
+                        "way   way   way  "
+                        "..... ..... ....."
+                        "pref  pref  pref "
+                        "..... ..... ....."20px
+                        "date  date  date "
+                        "..... ..... .....";
+                        .items_pay_side {
+                            grid-area: pay;
+                        }
+                        .items_post_way {
+                            grid-area: way;
+                            margin: 0 0 20px;
+                            display:  none;
+                        }
+                        .items_post_prefecture {
+                            grid-area: pref;
+                        }
+                        .items_post_date {
+                            grid-area: date;
+                        }
+                    }
+
+                    .items_form_price {
+                        display: grid;
+                        grid-template: 
+                        "..... ..... ....."
+                        "rate  rate  rate "
+                        "..... ..... ....."20px
+                        "form  form  form "
+                        "..... ..... ....."20px
+                        "fee   fee   fee  "
+                        "..... ..... ....."
+                        "profit profit profit";
+                        .rate_show {
+                            grid-area: rate;
+                        }
+                        .display_fee {
+                            grid-area: fee;
+                        }
+                        .display_profit {
+                            grid-area: profit;
+                        }
+                        .input_selling_price {
+                            grid-area: form;
+                        }
+                        .rate_show {
+                            text-align: center;
+                            display: flex;
+                            .price_rate {
+                                color:   gray;
+                                font-size: 12px;
+                                margin:0 5px 0 0;
+                            }
+                            label {
+                                .fas {
+                                    color:lightblue;
+                                }
+                                a {
+                                    display: none;
+                                }
+                            }
+                        }
+                        .input_selling_price {
+                            .price_items_form_style{
+                                display: grid;
+                                grid-template: 
+                                "label fields ..... mark input"/
+                                auto auto 1fr auto 285px;
+                                label {
+                                    grid-area:  label;
+                                }
+                                .mandatory_fields {
+                                    grid-area: fields;
+                                }
+                                .¥mark {
+                                    grid-area:  mark;
+                                }
+                                .price_input {
+                                    grid-area: input;
+                                    text-align:  end;
+                                    height: 30px;
+                                }
+                            }
+                        }
+                        .price_display {
+                            display: flex;
+                            justify-content: space-between;
+                            line-height: 40px;
+                            height: 40px;
+                        }
+                        .display_profit {
+                            border-top: 1px solid lightgray;
+                        }
+                    }
+
+                    .items_form_submit {
+                        display: grid;
+                        .items_form_submit_btn {
+                            grid-area: submit;
+                        }
+                        .items_form_draft_btn {
+                            grid-area: draft;
+                        }
+                        .items_btn_back {
+                            grid-area: back;
+                        }
+                        .items_btn_submit {
+                            background-color: red;
+                            color: white;
+                        }
+                        .items_btn_draft {
+                            background-color: lightgray;
+                        }
+                        .item_situation {
+                            display: none;
+                        }
+                        .items_btn_back {
+                            text-align: center;
+                            a{
+                                color: blue;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+
+                    .items_form_notice {
+                        background-color: white;
+                        .notice_text {
+                            margin:0 40px 64px;
+                            font-size: 12px;
+                        }
+                    }
+
+                    .items_form {
+                        background-color: white;
+                    }
+                    .items_form_price {
+                        background-color: white;
+                        padding: 40px 40px 0;
+                    }
+                    .items_form_style {
+                        display: flex;
+                        label {
+                            font-weight: bold;
+                            margin: 0 5px 0 0;
+                            flex-wrap: nowrap;
+                        }
+                        .items_mandatory_fields {
+                            background-color: red;
+                            border-radius: 5px;
+                            flex-wrap:  nowrap;
+                            color:     white;
+                            max-width: 50px;
+                        }
+                        .items_option_fields {
+                            background-color: lightgray;
+                            color: white;
+                        }
+                    }
+                    .items_caution {
+                        text-align: end;
+                        display:   none;
+                        color:    red;
+                    }
+                    select {
+                        background-color: white;
+                        width:  100%;
+                        height: 48px;
+                    }
+                    button {
+                        cursor:    pointer;
+                        text-align: center;
+                        font-weight:  bold;
+                        font-size:    17px;
+                        width:  100%;
+                        height: 48px;
+                    }
+                }
+            }
+        }
+        .items_footer {
+            text-align:      center;
+            display:           grid;
+            .items_privacy_policy {
+                grid-area:  privacy;
+            }
+            .items_terms_of_service {
+                grid-area:    terms;
+            }
+            .items_notation {
+                grid-area: notation;
+            }
+            .items_footer_logo_to_index {
+                grid-area:     logo;
+            }
+            .items_c_inc {
+                grid-area:    c_inc;
+            }
+        }
+    }
+}
+
+// 画面サイズ 大
+@media screen and (min-width: 767px) {
+    .items_new,.items_edit {
+        .items_body {
+            margin:  auto;
+            width:  700px;
+            grid-template:
+            "main " 1fr;
+            .items_new_header {
+                text-align: center;
+                .items_header_logo {
+                    width:   185px;
+                }
+            }
+            .items_main {
+                height:100%;
+                width: 100%;
+                .items_form_list {
+                    .items_form_photos {
+                        min-height: 300px;
+                    }
+                    .items_form_submit {
+                        grid-template:
+                        "...... ...... ......"
+                        "...... submit ......"
+                        "...... ...... ......"15px
+                        "...... draft  ......"
+                        "...... ...... ......"15px
+                        "...... back   ......"
+                        "...... ...... ......"0/
+                        0 auto 0;
+                    }
+                }
+            }
+            .items_footer {
+                height: 220px;
+                width:   100%;
+                grid-template:
+                "...... ...... ...... ...... ......" 40px
+                "...... privacy terms notation ......"55px
+                "...... ...... logo  ...... ......" 80px
+                "...... ...... c_inc ...... ......" 12px
+                "...... ...... ...... ...... ......" 40px /
+                auto 150px 100px 150px auto;
+                .items_footer_logo_to_index {
+                    .items_footer_logo {
+                        width:  100%;
+                    }
+                }
+                .items_footer_link {
+                    font-size:  12px;
+                }
+                .items_c_inc {
+                    font-size:   9px;
+                }
+            }
+            .items_form {
+                padding: 40px;
+            }
+        }
+    }
+}
+
+// 画面サイズ 小
+@media screen and (max-width: 766px) {
+    .items_new,.items_edit {
+        .items_body {
+            width:   100%;
+            grid-template:
+            "..... .....  ....." 10px
+            "..... header ....."
+            "..... .....  ....." 10px
+            "..... main   ....." 1fr
+            "..... .....  ....."
+            "..... footer ....." 
+            "..... .....  ....."0/
+            0 minmax(580px, 1fr) 0;
+            .items_header {
+                text-align: center;
+                .items_header_logo {
+                    width:   120px;
+                }
+            }
+            .items_main {
+                height:    100%;
+                width:     100%;
+                .items_form_photos {
+                    .photos_input {
+                        label {
+                            .photos_input_text {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                .items_form_submit {
+                    grid-template:
+                    "...... ...... ......"
+                    "...... submit ......"
+                    "...... ...... ......"15px
+                    "...... draft  ......"
+                    "...... ...... ......"15px
+                    "...... back   ......"
+                    "...... ...... ......"0/
+                    0 auto 0;
+                    .btn_back {
+                        grid-area:    back;
+                        text-align: center;
+                    }
+                }
+            }
+            .items_footer {
+                width:   100%;
+                height: 220px;
+                grid-template: 
+                "......  ......   ......"
+                "......  privacy  ......"
+                "......  terms    ......" 
+                "......  notation ......"
+                "......  logo     ......" 
+                "......  c_inc    ......" 
+                "......  ......   ......" 10px/
+                auto 150px auto;
+                .items_footer_link {
+                    font-size:  12px;
+                }
+                .items_footer_logo_to_index {
+                    .items_footer_logo {
+                        width:  100%;
+                    }
+                }
+                .items_c_inc {
+                    font-size:   9px;
+                }
+            }
+            .items_form {
+                padding: 10px;
+            }
+            .footer{
+                grid-area: footer;
+            }
+        }
+    }
+}

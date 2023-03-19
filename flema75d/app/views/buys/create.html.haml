@@ -1,0 +1,11 @@
+
+= render "templates/form_header"
+.main__container
+  .main__container__form
+    .content-wrap
+      .complete-text
+        %p 購入手続きが完了いたしました！
+        %p{style: "width:360px;"} 出品者からの連絡をお待ちください。
+      %a{ href: root_path, class: "btn" } トップページへ戻る
+  .image-box
+= render "templates/form_footer"

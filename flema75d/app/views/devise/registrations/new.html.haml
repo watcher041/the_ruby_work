@@ -1,0 +1,70 @@
+= render "templates/form_header"
+.main
+  .main__container
+    .main__container__head
+      %h2 会員情報入力
+    .main__container__form
+      .content-wrap
+        = form_for @user, url: user_registration_path do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .field
+            .field-label
+              = f.label :nickname, "ニックネーム"
+              %span.form-term.form-term__require 必須
+            .field-input
+              = f.text_field :nickname, autofocus: true, class: 'input-default required', placeholder: '例)フリマ太郎', required: true
+          .field
+            .field-label
+              = f.label :email, "メールアドレス"
+              %span.form-term.form-term__require 必須
+            .field-input
+              = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-default required', placeholder: 'PC・携帯どちらでも可', required: true
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
+            .field
+              .field-label
+                = f.label :password, "パスワード"
+                %span.form-term.form-term__require 必須
+            .field-input
+              = f.password_field :password, autocomplete: "new-password", class: 'input-default required', placeholder: '7文字以上の半角英数字', required: true
+            %p.field-info-text ※英字と数字の両方を含めて設定してください。
+            .field
+              .field-label
+                = f.label :password_confirmation, "パスワード(確認用)"
+                %span.form-term.form-term__require 必須
+              .field-input
+                = f.password_field :password_confirmation, autocomplete: "off", class: 'input-default required', placeholder: 'もう一度入力してください', required: true
+          .field
+            %h3.confirmation-text-head 本人確認
+            %p.confirmation-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .field
+            .field-label
+              = f.label :name_kanji, "お名前(全角)"
+              %span.form-term.form-term__require 必須
+            .field-input.name
+              = f.text_field :first_name, autofocus: true, class: 'input-default required', placeholder: '例)山田', required: true
+              = f.text_field :last_name, autofocus: true, class: 'input-default required', placeholder: '例)太郎', required: true
+          .field
+            .field-label
+              = f.label :name_kana, "お名前カナ(全角)"
+              %span.form-term.form-term__require 必須
+            .field-input.name
+              = f.text_field :first_kana, autofocus: true, class: 'input-default required', placeholder: '例)ヤマダ', required: true
+              = f.text_field :last_kana, autofocus: true, class: 'input-default required', placeholder: '例)タロウ', required: true
+          .field
+            .field-label
+              = f.label :birthday, "生年月日"
+              %span.form-term.form-term__require 必須
+            .field-birthday_select
+              = raw sprintf(f.date_select(:birthday,{ start_year: Date.today.year, end_year: Date.today.year-120,prompt:"--", use_month_numbers: true, with_css_classes: true,discard_minute:true,date_separator: '%s', datetime_separator: '%s'}, {required: true}), '<div class="input-field-multiple__separate-text">年</div>', '<div class="input-field-multiple__separate-text">月</div>') +'<div class="input-field-multiple__separate-text">日</div>'
+          .field
+            .field-label
+              = f.label :phone_number, "電話番号"
+              %span.form-term.form-term__any 任意
+            .field-input
+              = f.telephone_field :phone_number, autofocus: true, class: 'input-default', placeholder: '例)09012345678', maxlength: 11
+          %p.field-info-text ※本人情報は正しく入力してください。会員登録後、修正するにはお時間をいただく場合があります。
+          .actions
+            = f.submit "次へ進む", class:'btn'
+= render "templates/form_footer"

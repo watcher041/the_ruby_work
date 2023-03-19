@@ -1,0 +1,278 @@
+* {
+  box-sizing: border-box;
+}
+
+h2 {
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.error {
+  color: red;
+}
+
+.main {
+  background-color: whitesmoke;
+}
+
+.header {
+  height: 128px;
+  text-align: center;
+  background-color: whitesmoke;
+  &__logo {
+    margin: 40px 0 0;
+  }
+}
+
+.main__container {
+  width: 700px;
+  margin: 0 auto;
+  background-color: white;
+  &__head {
+    font-size: 22px;
+    padding: 32px;
+    text-align: center;
+    border-bottom: 1px solid whitesmoke;
+  }
+  &__form {
+    padding: 20px 10px 30px;
+  }
+}
+
+.content-wrap {
+  max-width: 343px;
+  margin: 0 auto;
+  &-omuniauth {
+    display: none;
+  }
+}
+
+.no_account-wrap {
+  max-width: 343px;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.btn-new_user {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  background-color: red;
+  border: 1px solid red;
+  margin-top: 10px;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  i {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translate(0, -50%);
+  }
+  &__email {
+    margin-bottom: 16px;
+  }
+}
+
+.field {
+  margin: 24px 0 0;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+}
+
+.input-default,.select-default {
+  height: 48px;
+  width: 100%;
+  margin: 8px 0 0;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+  background-color: white;
+  font-size: 16px;
+}
+
+.field-input.name {
+  display: grid;
+  grid-template:
+  "first ... last "
+  "error error error"/1fr 6px 1fr;
+  #user_first_name,#user_first_kana {
+    grid-area: first;
+  }
+  #user_last_name,#user_last_kana {
+    grid-area: last;
+  }
+  span {
+    grid-area: error;
+  }
+}
+
+.form-term {
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: white;
+  font-size: 12px;
+  &__require {
+    background-color: red;
+  }
+  &__any {
+    background-color: lightgray;
+  }
+}
+
+.field-info-text {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: gray;
+}
+
+.confirmation-text-head {
+  font-weight: 600;
+  color: black;
+}
+
+.confirmation-text {
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.field-birthday_select {
+  display: flex;
+  line-height: 64px;
+}
+
+.input-field-multiple__separate-text {
+  margin: 0 8px;
+}
+
+.year,.month,.day {
+  height: 48px;
+  position: relative;
+  z-index: 2;
+  padding: 0 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-size: 16px;
+  margin: 8px 0 0;
+  cursor: pointer;
+}
+
+.complete-text {
+  font-size: 18px;
+  text-align: center;
+}
+
+.image-box {
+  height: 300px;
+  width: 100%;
+  background-image: image-url("pict/bg-topMiddleDl-pict.jpg");
+  background-size: cover;
+}
+
+.btn {
+  margin: 24px 0 0;
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #3CCACE;
+  border: 1px solid #3CCACE;
+  text-decoration: none;
+  color: #fff;
+  &__complete {
+    font-size: 18px;
+  }
+  &__facebook {
+    color: white;
+    background-color: #4169e1;
+    border: #4169e1;
+    position: relative;
+    margin: 0;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    i {
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translate(0, -50%);
+    }
+  }
+  &__google {
+    color: black;
+    background: white url(https://www.mercari.com/jp/assets/img/common/common/google.svg) no-repeat 3px top;
+    border: 1px solid darkgray;
+    position: relative;
+    margin-top: 16px;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+    i {
+      color: crimson;
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translate(0, -50%);
+    }
+  }
+}
+
+.login-help-message {
+  display: block;
+  font-size: 14px;
+  color: #3CCACE;
+  margin-top: 40px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;  
+  }
+}
+
+.footer {
+  width: 456px;
+  height: 220px;
+  margin: 0 auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 250px;
+  padding: 40px 0;
+  text-align: center;
+  width:100%;
+  background-color: whitesmoke;
+  &__lists {
+    margin-top: 10px;
+    a {
+      text-decoration: none;
+      font-size: 12px;
+      color: black;
+      margin: 0 0 0 18px;
+      &:hover {
+        text-decoration:underline;
+      }
+    }
+  }
+  &__logo {
+    margin: 40px auto 0;
+  }
+  p {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}

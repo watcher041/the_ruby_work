@@ -1,0 +1,97 @@
+
+
+.buys {
+
+  &_new {
+      font-size:15px;
+      background-color:  whitesmoke;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    > img {
+      width:140px;
+      margin:40px;
+    }
+    &-contents {
+        width:600px;
+        margin:0 auto;
+        background-color: white;
+      & h2 { 
+        box-sizing: border-box;
+        text-align: center;
+        font-size:20px;
+        border-bottom: 1px solid lightgrey;
+        width:100%;
+        padding:30px;
+      }
+      &-blocK {
+        width:100%;
+        border-bottom: 1px solid lightgrey;
+      }
+      &-product , &-price , &-method , &-post {
+        width:300px;
+        margin:30px auto;
+        display:flex;
+        justify-content: space-between;   
+        text-align: left;
+        &-top {
+          > img {
+            width:60px;
+            margin:5px;
+          }
+          
+        }
+        &-image {
+          width:100px;
+          height:100px;
+          margin:5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          > img {
+            width:100%;
+          }
+        }
+      }
+      &-product {
+        &-img {
+          height:60px;
+          width:60px;
+          border:1px solid;    
+        }
+      }     
+      & form {
+        padding:30px 20%;
+        text-align: center;
+        & input {
+          border:none;
+          background-color: orangered;
+          color:white;
+          width:100%;
+          padding:10px 0;
+        }
+      }
+    }
+    &-fotter {
+        width:100%;
+      &-lists {
+        display: flex;
+        justify-content: center;
+        margin:10px;
+      }
+      > img {
+        width:140px;
+      }
+      & p {
+        font-size: 10px;
+        margin:5px;
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .buys_new-contents {
+    width:100%;
+  }
+}

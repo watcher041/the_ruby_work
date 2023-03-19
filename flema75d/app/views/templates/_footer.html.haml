@@ -1,0 +1,25 @@
+.mains_index__footer
+  %ul.contents
+    %li.content
+      %h2.content__head FURIMAについて
+      %ul.lists
+        %li 会社概要（運営会社）
+        %li プライバシーポリシー
+        %li FURIMA利用規約
+        %li ポイントに関する特約
+
+    %li.content
+      %h2.content__head FURIMAを見る
+      %ul
+        %li= link_to "カテゴリー一覧", category_all_items_path 
+        %li ブランド一覧
+
+    %li.content
+      %h2.content__head ヘルプ＆ガイド
+      %ul
+        %li FURIMAガイド
+        %li FURIMAロゴ利用ガイドライン
+        %li お知らせ
+  .footer__logo
+    = link_to image_tag(src="logo/logo-white.png",class:"logo_img"), root_path
+  %p © FURIMA

@@ -1,0 +1,11 @@
+
+= render "templates/form_header"
+.main
+  .main__container
+    .main__container__form
+      .content-wrap
+        .complete-text
+          %p カード情報を削除いたしました！
+        %a{ href: user_path(current_user.id), class: "btn" } マイページへ戻る
+    .image-box
+= render "templates/form_footer"

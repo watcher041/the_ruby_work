@@ -1,0 +1,12 @@
+
+= render "templates/form_header"
+.main
+  .main__container
+    .main__container__form
+      .content-wrap
+        .complete-text
+          %p カードの登録が完了いたしました！
+          %p{style: "width:360px;"} 引き続きショッピングをお楽しみください！
+        %a{ href: user_path(current_user.id), class: "btn" } マイページへ戻る
+    .image-box
+= render "templates/form_footer"

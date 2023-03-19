@@ -1,0 +1,14 @@
+
+= render "templates/form_header"
+.main
+  .main__container
+    .main__container__head
+      %h2 会員登録完了
+    .main__container__form
+      .content-wrap
+        .complete-text
+          %p ありがとうございます。
+          %p 会員登録が完了しました。
+        = link_to "フリマをはじめる ", user_path(current_user.id), class: "btn" 
+    .image-box
+= render "templates/form_footer"
