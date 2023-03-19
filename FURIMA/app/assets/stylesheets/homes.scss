@@ -1,0 +1,69 @@
+
+.homes {
+
+  &_index {
+    &-top {
+      width:100%;
+      height:40vw;
+      & img {
+        height:100%;
+        width:100%;
+      }
+
+    }
+    &-main{
+        background-color: white;
+        padding:30px 10%;
+      > h2 {
+        font-size:30px;
+        font-weight: bold;
+        padding-top:20px;
+      }
+      &-item{
+          display: flex;
+          flex-wrap: wrap;
+        &-list{
+          width:15%;
+          height:18vw;
+          margin:20px;
+          box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+          > a {
+            text-decoration:none;
+            color:black;
+            width:100%;
+            height:100%;
+            &:hover {
+              color:orange;
+            }
+          }
+          &-image{
+            width:100%;
+            height:13vw;
+            @include position_center();
+            background-color: whitesmoke;
+            > img {
+              max-width: 100%;
+              max-height: 100%;
+            }
+          }
+          &-detail{
+            padding:10px;
+          }
+        }
+      }
+      &-category{
+        background-color: whitesmoke;
+        padding:10px;
+        > a{
+          border-radius: 10px;
+          display: inline-block;
+          border:1px solid black;
+          padding:0 5px;
+          margin:5px;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+}

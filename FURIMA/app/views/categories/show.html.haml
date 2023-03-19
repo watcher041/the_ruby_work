@@ -1,0 +1,12 @@
+
+= render "templates/header"
+.categories_header
+  %h2= @category.name
+  .categories_header-category
+    - @categories.each_with_index do |category,num|
+      = link_to category.name ,category_path(category.id)
+.categories_show
+  %h2= "#{@category.name}の商品一覧"
+  .categories_header-top-content_child
+    - @categories.each do |category|
+      = link_to category.name, category_path(category.id)

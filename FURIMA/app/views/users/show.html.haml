@@ -1,0 +1,22 @@
+
+= render "templates/header"
+.users_show
+  - if user_signed_in?
+    = render "templates/sidebar"
+  .users_show-main
+
+    .users_show-main-top
+      %i.fas.fa-smile
+      .users_show__mypage-top-user
+        = current_user.nickname
+      .users_show__mypage-top-other
+        -# .number__left
+        -#   %p.text 評価
+        -#   %p.count= current_user.evaluates.count
+        .number__right 
+          %p.text 出品数
+          %p.count= current_user.items.count
+          
+    .users_show__mypage-notice
+      %h2 お知らせ
+

@@ -1,0 +1,65 @@
+
+.users {
+
+  &_index { 
+    .top {
+      background-image:image-url("pict/top_image.jpg");
+      background-size:contain;
+      height:400px; width:100%;
+      background-repeat: no-repeat;
+    }
+    .footer {
+      background-color: #333333;
+    }
+  }
+
+  &_show {
+    width:70%;
+    margin:50px auto;
+    height:1100px;
+    display: flex;
+    justify-content: space-between;
+    &-side {
+      & h3 {
+        margin-top:50px;
+      }
+      & li {
+        background-color: white;
+        width:100%;
+        text-align: center;
+        border:1px solid lightgray;
+        > a {
+          text-decoration: none;
+          display: block;
+          font-size:20px;
+          padding:10px 20px;
+          &:hover {
+            box-shadow: 10px 10px 10px rgba(0,0,0,1.1);
+          }
+        }
+      }
+    }
+    &-main {
+      background-color: white;
+      height:100%;
+      width:65%;
+      &-top {
+        height:200px;
+        width:100%;
+        background-image: image-url("pict/sky.jpg");
+        background-size: cover;
+        background-position:center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & i {
+          font-size:60px;
+          margin:10px;
+          color:grey;
+          background-color: black;
+        }
+      }
+    }
+  }
+}

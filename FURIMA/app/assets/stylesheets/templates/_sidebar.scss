@@ -1,0 +1,22 @@
+
+
+._sidebar {
+  & h3 {
+    margin-top:50px;
+  }
+  & li {
+    background-color: white;
+    width:100%;
+    text-align: center;
+    border:1px solid lightgray;
+    > a {
+      text-decoration: none;
+      display: block;
+      font-size:20px;
+      padding:10px 20px;
+      &:hover {
+        box-shadow: 10px 10px 10px rgba(0,0,0,1.1);
+      }
+    }
+  }
+}

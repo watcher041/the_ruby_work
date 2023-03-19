@@ -1,0 +1,75 @@
+
+= form_with model: item, local: true do |f|  
+  ._item-field
+    = f.label :name
+    %span.require 必須
+    %br
+    = f.text_field :name
+  ._item-field
+    = f.label :detail
+    %span.require 必須
+    %br
+    = f.text_area :detail
+  ._item-field
+    = f.label :image
+    %span.require 必須
+    %br
+    ._item-field-area
+      - if item.images.present?
+        - item.images.each do |image|
+          ._item-field-area-image
+            ._item-field-area-image-outline
+              = image_tag image.data.url
+            ._item-field-area-image-edit
+              %label 
+                変更
+                = f.fields_for :images, item do |image|
+                  = image.file_field :data, class: "field-area-image-input"
+              %label{class:"image-remove"}
+                削除
+      %label._item-field-area-label
+        = f.fields_for :images, item do |image|
+          %i.fa.fa-image
+          %p 画像は10枚まで投稿できます
+          = image.file_field :data, id:"file_get_field"
+  ._item-field
+    = f.label :status
+    %span.require 必須
+    %br
+    = f.select :status, Item.statuses.keys.map{|k|[I18n.t("enums.item.status.#{k}"),k]}, include_blank: "選択してください"
+  ._item-field
+    = f.label :category
+    %span.require 必須
+    %br
+    - unless item.category&.has_parent?
+      = f.collection_select(:category_id, Category.where(ancestry:nil), :id, :name, {selected: item.category&.id, include_blank: "選択してください"},{ class: "category_list", required: true})
+    - else
+      - unless item.category.parent.has_parent?
+        = f.collection_select(:category_id, Category.where(ancestry:nil), :id, :name, {selected: item.category.parent.id, include_blank: "選択してください"},{ class: "category_list", required: true})
+        = f.collection_select(:category_id, item.category.parent.children, :id, :name, {selected: item.category.id, include_blank: "選択してください"},{ class: "category_list", required: true})
+      - else 
+        = f.collection_select(:category_id, Category.where(ancestry:nil), :id, :name, {selected: item.category.parent.parent.id, include_blank: "選択してください"},{ class: "category_list", required: true})
+        = f.collection_select(:category_id, item.category.parent.parent.children, :id, :name, {selected: item.category.parent.id, include_blank: "選択してください"},{ class: "category_list", required: true})
+        = f.collection_select(:category_id, item.category.parent.children, :id, :name, {selected: item.category.id, include_blank: "選択してください"},{ class: "category_list", required: true})
+  ._item-field
+    = f.label :brand
+    %span.any 任意
+    %br
+    = f.text_field :brand
+  ._item-field
+    = f.label :prefecture
+    %span.require 必須
+    %br
+    = f.collection_select :prefecture_id,Prefecture.all, :id, :name, include_blank: "選択してください"
+  ._item-field
+    = f.label :pay_side
+    %span.require 必須
+    %br
+    = f.select :pay_side, Item.pay_sides.keys.map{|k|[I18n.t("enums.item.pay_side.#{k}"),k]}, include_blank: "選択してください"
+  ._item-field
+    = f.label :price
+    %span.require 必須
+    %br
+    = f.number_field :price
+  ._item-field
+    = f.submit

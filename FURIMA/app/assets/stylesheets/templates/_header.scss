@@ -1,0 +1,70 @@
+
+.header {
+    background-color: white;
+    padding:20px 10%;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+  &-top {
+    display: flex;
+    justify-content: space-between;   
+    height:40px;
+    > a , img {
+      height:100%;
+      margin-right:10px;
+      text-decoration: none;
+    }
+    > form {
+        display: flex;
+        height:40px;
+        width:100%;
+      & input[type="text"]{
+        width:100%;
+        height:100%;
+        padding:10px;
+      }
+      > label {
+        height:100%;
+        width:40px;
+        background-color: skyblue;
+        border:1px solid gray;
+        @include position_center;
+        > input[type="submit"]{
+          display: none;
+        }
+        &:hover {
+          cursor: pointer;
+        } 
+      }
+    }
+  }
+  &-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding:20px 10px 0;
+    & a {
+      color:black;
+      padding:10px;
+      display: block;
+      text-decoration: none;
+      &:hover {
+        color:orange;
+      }
+    }
+    > div {
+      display: flex;
+    }
+    &-left{
+      &-category {
+        position: relative;
+        &-field {
+          position: absolute;
+          display: flex;
+          background-color:white;
+          z-index:1;
+          & ul {
+            width:200px;
+          }
+        }
+      }
+    }
+  }   
+}

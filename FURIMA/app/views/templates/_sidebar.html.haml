@@ -1,0 +1,22 @@
+
+._sidebar
+
+  %ul
+    %li= link_to "マイページ",    user_path(current_user.id)  
+    %li= link_to "出品する",      new_item_path
+    %li= link_to "下書き一覧",    draft_user_side_bars_path(current_user.id)  
+    %li= link_to "いいね一覧",    nice_user_side_bars_path(current_user.id)
+    %li= link_to "評価一覧",      evaluation_user_side_bars_path(current_user.id)
+    %li= link_to "出品した商品",  exhibited_user_side_bars_path(current_user.id)
+    %li= link_to "購入した商品",  purchased_user_side_bars_path(current_user.id)
+    %li= link_to "ガイド",       homes_path 
+    %li= link_to "お問い合わせ",  contact_user_side_bars_path(current_user.id)  
+
+  %h3 アカウント情報
+  %ul
+    %li= link_to "本人情報変更",           edit_user_registration_path   
+    %li= link_to "発送元・お届け先住所変更", "#"    
+    %li= link_to "支払い方法管理",         "#"   
+    %li= link_to "メール・パスワード",      "#"    
+    %li= link_to "電話番号の確認",         "#"      
+    %li= link_to "ログアウト",            destroy_user_session_path

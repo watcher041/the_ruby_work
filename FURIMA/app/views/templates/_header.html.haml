@@ -1,0 +1,38 @@
+
+.header
+  .header-top
+    = link_to image_tag("logo/logo.png") , root_path
+    = form_with() do |f|
+      = f.text_field :keyword, placeholder: "キーワードから探す", class: "search_box"
+      %label
+        = icon("fas","search")
+        = f.submit "検索"  
+  .header-bottom
+    .header-bottom-left
+      .header-bottom-left-category
+        .header-bottom-left-category-title
+          = link_to categories_path ,class:"category_name", data:{category_id:0} do
+            %i.fas.fa-list
+              カテゴリから探す
+        .header-bottom-left-category-field
+      .header-bottom-left-tag
+        = link_to "#" do
+          %i.fas.fa-tags
+            タグから探す
+    .header-bottom-right
+      -if user_signed_in?
+        .header-bottom-right-todo
+          = link_to "#" do
+            %i.fas.fa-check
+              ToDoリスト
+        .header-bottom-right-mypage
+          = link_to user_path(current_user.id) do
+            %i.fas.fa-user
+              マイページ
+      -else
+        = link_to new_user_session_path do
+          %i.fas.fa-sign-in-alt
+            ログイン 
+        = link_to new_user_registration_path do
+          %i.fas.fa-user-plus
+            新規登録 

@@ -1,0 +1,17 @@
+
+= render "templates/header"
+.homes_index
+  %ul.homes_index-top
+    - 3.times do |index|
+      %li= image_tag "pict/top_image#{index+1}.jpg"
+  .homes_index-main
+    %h2 今月話題の商品
+    = render partial: "templates/item_list", locals: {items:@items} 
+    %h2 カテゴリーごとの人気商品
+    .homes_index-main-category
+      - Category.where(ancestry:nil).each do |category|
+        =link_to category.name ,item_list_category_path(category.id), remote:true
+    .homes_index-main-category_item
+= render "templates/exhibition"
+= render "templates/footer"
+  

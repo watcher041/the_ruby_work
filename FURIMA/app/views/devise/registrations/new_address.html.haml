@@ -1,0 +1,25 @@
+
+= render "templates/form_header"
+.form
+  %h2 住所情報登録
+  = form_for @address do |f|
+    = render "devise/shared/error_messages", resource: @address
+    .field
+      = f.label :zipcode
+      %span.require 必須
+      %br/
+      = f.text_field :zipcode, required: true, placeholder: "例）123-4567"
+    .field
+      = f.label :address
+      %span.require 必須
+      %br/
+      = f.text_field :address, required: true, placeholder: "〇〇県〇〇市〇〇町〜"
+    .field
+      = f.label :build_name
+      %span.any 任意
+      %br/
+      = f.text_field :build_name, placeholder: "例）フリマ太郎"
+    .actions
+      = f.submit "送信"
+= render "templates/form_footer"
+

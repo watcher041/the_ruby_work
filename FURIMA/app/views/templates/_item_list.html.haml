@@ -1,0 +1,12 @@
+
+.homes_index-main-item
+  - items.each do |item|
+    .homes_index-main-item-list
+      = link_to item_path(item.id) do
+        .homes_index-main-item-list-image
+          = image_tag item.images.first.data.url
+          - if item.situation == "transaction" 
+            = image_tag 'pict/soldout.jpg'
+        .homes_index-main-item-list-detail
+          %p= item.name
+          %p= "#{item.impressions_count}閲覧"

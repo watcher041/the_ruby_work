@@ -1,0 +1,22 @@
+
+= render "templates/header"
+.categories_header
+  %h2 カテゴリー目次
+  .categories_header-category
+    - @categories.each_with_index do |category,num|
+      = link_to category.name, "" ,data:{category_index:num}, remote: true
+.categories_index
+  - @categories.each_with_index do |parent,num|
+    .categories_index-category{class:"categories_header"}
+      %h2{id:"#{num}"}= link_to parent.name, category_path(parent.id)
+      .categories_index-category-child
+        - parent.children.each do |child|
+          %p=link_to child.name, category_path(child.id)
+          .categories_index-category-child-grandchild{class:"categories_header-category"}
+            - child.children.each do |grandchild|
+              = link_to grandchild.name,category_path(grandchild.id)
+#scroll_to_top
+  %i.fas.fa-angle-double-up
+  %p 一番上に戻る
+= render "templates/exhibition"
+= render "templates/footer"
