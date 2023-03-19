@@ -1,0 +1,36 @@
+
+.container
+  %h1= form_title
+  - if post.errors.any?
+    .alert.alert-danger
+      - post.errors.full_messages.each do |error|
+        %p= error
+  = form_with(model: post, local: true, class: "mb-3") do |f|
+    .form-top
+      .form-top-list
+        .form-group
+          = f.label :title, class: "form-label"
+          = f.text_field :title, placeholder: "title（タイトル）", class: "form-control"
+        .form-group
+          = f.label :author, class: "form-label"
+          = f.text_field :author, placeholder: "author（著者）", class: "form-control"
+      .form-top-image
+        = f.label :image, class:"form-label" do
+          = f.file_field :image, class: "image-file"
+          - if @post.image.present?
+            = image_tag (url_for(:action => 'get_image',:controller => 'posts', :id => @post.id)), class: "file-image" ,size: "150x150"
+          - else
+            = image_tag 'default.jpg' ,class: "file-image" 
+    .form-group
+      = f.label :text, class: "form-label"
+      = f.text_area :text, placeholder: "text（書籍紹介）" , rows: 10, class: "form-control"
+    .form-group
+      = f.label :tags, class: "form-label"
+      = f.nested_fields_for :tags, son_model do |list|
+        = list.text_field :name, placeholder: "tag（タグ）", class: "form-control"
+        = list.remove_nested_fields_link '削除', class: 'btn btn-danger'
+      = f.add_nested_fields_link :tags ,'タグを追加'
+    .form-group
+      = f.submit "登録", class: 'btn btn-primary'
+
+

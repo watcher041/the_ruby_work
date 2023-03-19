@@ -1,0 +1,41 @@
+
+.container
+  %h1 PROFILE
+  .form-top-view 
+    .form-top-image
+      - if @user.image.present?
+        = image_tag (url_for(:action => 'get_image', :controller => 'users' ,:id => @user.id)), class: "file-image" ,size: "150x150"
+      - else
+        = image_tag 'default.jpg' ,class: "file-image" 
+    %ul
+      %li= "　　　　投稿者： #{@user.name}"
+      %li= "メールアドレス： #{@user.email}"
+  -if @user.text.present?
+    .form-group
+      %h3 【自己紹介】
+      %p= @user.text
+
+.container
+  %h1 投稿一覧
+  -@posts.each do |post|
+    .form-top-view 
+      .form-top-image
+        - if post.image.present?
+          = image_tag (url_for(:action => 'get_image',:controller => 'posts', :id => post.id)), class: "file-image" ,size: "150x150"
+        - else
+          = image_tag 'default.jpg' ,class: "file-image" 
+      %ul
+        %li= "タイトル： #{post.title}"
+        %li= "　　著者： #{post.author}"
+        %li= "　投稿日： #{post.created_at.strftime('%Y/%m/%d %H:%M')}" 
+        %li= "　更新日： #{post.updated_at.strftime('%Y/%m/%d %H:%M')}"
+      - if user_signed_in? && @user.id == current_user.id 
+        %ul
+          %li.btn.btn-primary=link_to "編集", edit_post_path(post.id), style: "color:white"
+          %li.btn.btn-danger=link_to "削除", post_path(post.id), method: "delete", style: "color:white"
+    .form-group
+      %h3 【書籍情報】
+      %p= post.text
+
+.pagenate
+  = paginate @posts

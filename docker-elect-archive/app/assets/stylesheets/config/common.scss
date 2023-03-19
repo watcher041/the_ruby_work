@@ -1,0 +1,61 @@
+
+
+// 変数
+$header_back_color:#003333;
+$header_height:80px;
+$main_left_width:40%;
+$main_height:1600px;
+
+// ヘッダー、フッターの装飾
+@mixin header_size() {
+  width:100%;
+  height:$header_height;
+  background-color: $header_back_color;
+}
+
+// 縦横中央寄せにする際に使用
+@mixin position_center(){
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+// 画像の基準となるサイズ
+@mixin image_base_size(){
+  width:200px;
+  height:200px;
+}
+
+@mixin image_area(){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:150px;
+  height:150px;
+  & img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  & input {
+      display: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+a {
+  &:hover {
+    transition:color 0.5s;
+    color:red;
+  }
+}
+
+.form-top-view {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom:20px;
+}

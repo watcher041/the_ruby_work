@@ -1,0 +1,15 @@
+
+@import "config/reset";
+// @import "font-awesome-sprockets";
+// @import "font-awesome";
+@import "font-awesome";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "config/common";
+
+@import "template/header";
+@import "devise";
+@import "users";
+@import "posts";
+
+@import "comments";

@@ -1,0 +1,28 @@
+
+.container{
+  width:60%;
+  border: solid 1px #003333;
+  border-radius:10px 10px 0px 0px;
+  padding: 0;
+  margin: 40px auto;
+  > h1 {
+    text-align: center;
+    background-color: #003333;
+    border-radius:10px 10px 0px 0px;
+    color: white;
+    padding: 15px;
+    font-size: 25px;
+    margin:0;
+    margin-bottom: 20px;
+  }
+}
+
+.form-group{
+  padding: 0 10%;
+}
+
+#account_button{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}

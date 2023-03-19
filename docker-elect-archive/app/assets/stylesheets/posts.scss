@@ -1,0 +1,47 @@
+
+.form{
+  &-top{
+      display: flex;
+      padding-left: 30px;
+      &-list{
+          width:70%;
+      }
+      &-image{
+          & label {
+              @include image_area;
+              border:5px dashed;
+              &:hover {
+                  color:red;
+                  transition:color 0.5s;
+              }
+          }
+      } 
+  }
+}
+
+fieldset{
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.posts {
+  &_searches {
+
+    &_index {
+        @include position_center;
+        flex-direction: column;
+        margin-bottom:50px;
+      > h2 {
+        background-color: $header_back_color;
+        font-size:40px;
+        display: inline-block;
+        margin:30px auto;
+        text-align: center;
+        padding:10px 30px;
+        border: 2px groove;
+      }
+    }
+
+  }
+
+}

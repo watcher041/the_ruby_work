@@ -1,0 +1,24 @@
+
+.container
+  - if @posts.nil? || @posts.total_count.zero?
+    %h1 該当する書籍が見つかりませんでした…
+  - else
+    %h1 #{@posts.total_count}冊見つかりました
+    - @posts&.each do |post|
+      .form-top-view 
+        .form-top-image
+          = link_to user_path(post.user.id) do
+            - if post.image.present?
+              = image_tag (url_for(:action => 'get_image',:controller => 'posts', :id => post.id)), class: "file-image" ,size: "150x150"
+            - else
+              = image_tag 'default.jpg' ,class: "file-image" 
+        %ul
+          %li= "タイトル: #{post.title}"
+          %li= "　　著者: #{post.author}"
+          %li= "　投稿者: #{post.user.name}"
+          %li= "　投稿日: #{post.created_at.strftime('%Y/%m/%d %H:%M') }"
+      .form-group
+        %h3 【書籍情報】
+        %p= post.text
+    .pagenate
+      = paginate @posts 

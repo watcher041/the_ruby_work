@@ -1,0 +1,14 @@
+
+.container
+  %h1 返答フォーム
+  - if @comment&.errors&.any?
+    - @comment.errors.full_messages.each do |error|
+      %p= error
+  .form-group
+    %p= "#{@comment.created_at.strftime('%Y/%m/%d %H:%M') }  投稿"
+    %p= "#{@comment.name} さんから > #{@comment.text}" 
+  = form_with(model: @comment, local: true) do |f|
+    .form-group
+      = f.text_area :answer, placeholder: "返答内容" , rows: 5, class: "form-control"
+    .form-group
+      = f.submit "送信", class: 'btn btn-primary'

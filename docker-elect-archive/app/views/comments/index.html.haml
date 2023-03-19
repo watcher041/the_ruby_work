@@ -1,0 +1,8 @@
+
+.container
+  %h1 問い合わせ掲示板
+  - @comments.each do |comment|
+    .form-group
+      = link_to edit_comment_path(comment.id) do
+        %p#comment_time= "#{comment.created_at.strftime('%Y/%m/%d %H:%M') }  投稿"
+        %p#comment_list= "#{comment.name}  さんから > #{comment.text}"
