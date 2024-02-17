@@ -4,6 +4,9 @@ class ItemsController < ApplicationController
   before_action :find_item, except: [:index,:new,:create]
   impressionist actions: [:show]
 
+  def index
+  end
+  
   def new
     @item = Item.new
   end

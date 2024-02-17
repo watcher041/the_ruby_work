@@ -1,24 +1,33 @@
+
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+WSL2で以下のエラーが表示された場合は、コマンドを実行する。
+```
+Could not verify the SSL certificate for https://rubygems.org/.
+```
 
-Things you may want to cover:
+```bash
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y ca-certificates
+sudo update-ca-certificates
+```
 
-* Ruby version
+mysql2関連のエラーは以下のコマンドを実行
+```bash
+sudo apt install default-libmysqlclient-dev default-mysql-server default-mysql-client
+```
 
-* System dependencies
+その後もSSLエラーが発生するが、不安定？なため表示される
 
-* Configuration
+Gemfileのrubyとrailsのバージョンを変更して、コマンドを実行することでアップデートする。
+```bash
+bundle update
+rails app:update
+```
+→ 全てyにして、必要な差分を戻してからサーバーを起動する。
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+imagemagickもインストールが必要
+```
+sudo apt install imagemagick
+```
