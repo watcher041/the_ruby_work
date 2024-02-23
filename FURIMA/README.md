@@ -31,3 +31,44 @@ imagemagickもインストールが必要
 ```
 sudo apt install imagemagick
 ```
+
+railsにReactを導入する場合
+```Gemfile
+gem 'jsbundling-rails'
+```
+```bash
+bundle
+yarn add react react-dom esbuild
+```
+```bin/dev
+#!/usr/bin/env sh
+
+if gem list --no-installed --exact --silent foreman; then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+# Default to port 3000 if not specified
+export PORT="${PORT:-3000}"
+
+exec foreman start -f Procfile.dev "$@"
+```
+```Procfile.dev
+web: env RUBY_DEBUG_OPEN=true bin/rails server
+js: yarn build --watch
+```
+```package.json
+"dependencies": {
+    "esbuild": "^0.20.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+},
+    "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+}
+```
+```bash
+sudo chmod +x bin/dev
+bin/dev
+```
